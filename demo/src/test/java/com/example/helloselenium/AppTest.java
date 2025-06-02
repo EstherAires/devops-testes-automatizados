@@ -1,5 +1,6 @@
 package com.example.helloselenium;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -8,11 +9,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
+import java.io.File;
 
 public class AppTest {
     @Test
@@ -141,6 +147,28 @@ public class AppTest {
                 driver.quit();
             }
     }
+
+        @Test
+        public void tirarPrintEmCasoDeFalha() {
+            System.setProperty("webdriver.chrome.driver", "C://Users//esthe//Desktop//selenium//chrome-driver//chromedriver-win64//chromedriver.exe");
+            WebDriver driver = new ChromeDriver();
+            
+            try {
+                driver.get("https://www.google.com");
+                // Grave um screenshot caso falhe
+                Assert.assertTrue("Verificando elemento inexistente", driver.findElement(By.id("inexistente")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                // Captura a screenshot em caso de falha
+                File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                try {
+                    FileUtils.copyFile(screenshot, new File("C://Users//esthe//Documents//helloword-selenium//demo//src//test//java//com//example//FailedTestScreenshots//screenshot"));
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            } finally {
+                driver.quit();
+            }
+         }
 
 
 
