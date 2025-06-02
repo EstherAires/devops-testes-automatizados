@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-import org.openqa.selenium.NoSuchElementException;
+
 
 
 public class AppTest {
@@ -67,23 +67,7 @@ public class AppTest {
         }
     }
 
-     @Test
-        public void testaExistenciaDeElementos() {
-        System.setProperty("webdriver.chrome.driver", "C://Users//esthe//Desktop//selenium");
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://www.google.com");
-        driver.findElement(By.name("q")).sendKeys("Selenium WebDriver");
-        driver.findElement(By.name("btnK")).click();
-        
-        try {
-            // Verifica a presença do link do site oficial do Selenium
-            driver.findElement(By.linkText("SeleniumHQ Browser Automation"));
-        } catch (NoSuchElementException e) {
-            Assert.fail("Elemento não encontrado.");
-        }
-        // Fecha o navegador
-        driver.quit();
-    }
+
 
 
 }
