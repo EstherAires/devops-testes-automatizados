@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class App 
 {
     public static void main(String[] args) {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\arthu\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\esthe\\Desktop\\selenium");
 
         // Instancia o Navegador
         WebDriver chrome = new ChromeDriver();
